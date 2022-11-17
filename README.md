@@ -32,5 +32,10 @@ This is a `Vite + React` project with `Typescript`, you can find more informatio
 <td><a href="https://v5.reactrouter.com/web/guides/quick-start">React Router Dom v6</a></td>
 <td>For navigating between pages</td>
 </tr>
+
+<tr>
+<td><a href="https://tailwindcss.com/docs/installation">Tailwind CSS</a></td>
+<td>UI Library</td>
+</tr>
 </tbody>
 </table>
