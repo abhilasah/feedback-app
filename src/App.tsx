@@ -6,11 +6,15 @@ function App() {
     console.log(import.meta.env.VITE_APP_TITLE);
     const [darkMode, setDarkMode] = useState(true);
     return (
-        <div className={`min-h-full ${darkMode ? 'dark' : ''}`}>
-            <div className="bg-white dark:bg-slate-800">
+        <div
+            className={` font-body w-full h-screen ${
+                darkMode ? 'dark' : ''
+            } bg-blue-900`}
+        >
+            <div className="">
                 <AppErrorBoundary>
                     <button
-                        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        className="bg-transparent hover:bg-red-500 bg-red-400 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                         onClick={() => setDarkMode(!darkMode)}
                     >
                         Toggle Mode
