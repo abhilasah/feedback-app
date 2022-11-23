@@ -37,5 +37,10 @@ This is a `Vite + React` project with `Typescript`, you can find more informatio
 <td><a href="https://tailwindcss.com/docs/installation">Tailwind CSS</a></td>
 <td>UI Library</td>
 </tr>
+
+<tr>
+<td><a href="https://react-spring.dev/">@react-spring/web @use-gesture/react</a></td>
+<td>Animation Library</td>
+</tr>
 </tbody>
 </table>
