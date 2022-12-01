@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import Form from '../pages/form/Form';
 import Home from '../pages/home/Home';
+import Questions from '../pages/questions/Questions';
 
 const AppRouter = () => {
     return (
         <Routes>
             <Route path="/" index element={<Home />} />
-            <Route path="/forms" index element={<Form />} />
+            <Route path="/questions" index element={<Questions />} />
         </Routes>
     );
 };
