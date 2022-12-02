@@ -2,7 +2,7 @@ import QRCode from "react-qr-code"
 const qrCodeGenerator = (
     <QRCode
         size={500}
-        value="https://www.you.com/"
+        value="https://www.google.com/"
         level="H"
     />
 )
