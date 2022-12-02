@@ -2,8 +2,8 @@ import QRCode from "react-qr-code"
 const qrCodeGenerator = (
     <QRCode
         size={500}
-        value="https://www.youtube.com/"
-        level="L"
+        value="https://www.you.com/"
+        level="H"
     />
 )
 
