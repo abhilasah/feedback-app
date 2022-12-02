@@ -6,7 +6,9 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "dependencies": {
         "@fullpage/react-fullpage": "^0.1.31",
@@ -20,8 +22,10 @@
         "@types/react": "^18.0.17",
         "@types/react-dom": "^18.0.6",
         "@vitejs/plugin-react": "^2.1.0",
+        "gh-pages": "^4.0.0",
         "typescript": "^4.6.4",
         "vite": "^3.1.0",
         "vite-plugin-pwa": "^0.13.1"
-    }
+    },
+    "homepage": "http://{github-abhilasah}.github.io/{feedback-app}"
 }
