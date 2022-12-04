@@ -113,7 +113,6 @@ main {
   right: 10%;
 }
 .pro h2 {
-  width: 40%;
   color: white;
   font-weight: 600;
 }
@@ -186,7 +185,7 @@ main {
 }
 
 .question-container{
-  height: 800px;
+  min-height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
