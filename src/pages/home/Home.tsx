@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+
 const Home = () => {
+    const navigate = useNavigate();
     return (
         <>
             <div className="games">
@@ -25,7 +28,7 @@ const Home = () => {
                         <h2 className="percentage">4th floor cafeteria</h2>
                     </div>
                 </div>
-                <div className="pro">
+                <div className="pro" onClick={() => navigate('/questions')}>
                     <h2>Let's get started</h2>
                 </div>
             </div>
