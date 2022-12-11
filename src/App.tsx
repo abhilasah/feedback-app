@@ -1,18 +1,17 @@
-import AppErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
-import Layout from './components/layout/layout';
-import AppRouter from './router/AppRouter';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { loadResponses, startLoadingResponses } from './store/actions';
+import Main from './Main';
 
-function App() {
-    console.log(import.meta.env.VITE_APP_TITLE);
-    return (
-        <div>
-            <AppErrorBoundary>
-                <Layout>
-                    <AppRouter />
-                </Layout>
-            </AppErrorBoundary>
-        </div>
-    );
+function mapStateToProps(state:any) {
+    return {
+      survey: state.survey
+    }
+  }
+    
+function mapDispatchToProps(dispatch:any) {
+  return bindActionCreators({ startLoadingResponses, loadResponses },dispatch)
 }
 
+const App = connect(mapStateToProps,mapDispatchToProps)(Main);
 export default App;
