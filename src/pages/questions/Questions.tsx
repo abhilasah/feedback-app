@@ -1,14 +1,26 @@
-import { useEffect, useState } from 'react';
+import { Button } from 'antd';
+import { useCallback, useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import readXlsxFile from 'read-excel-file';
 
 type TQuestion = {
+    questionID: string;
     question: string;
     answers: any[];
 };
+type TSubmittedAns = {
+    questionID: string;
+    userAnswer: number;
+};
 const Home = () => {
     const [questions, setQuestions] = useState<TQuestion[]>([]);
+    const [submittedAns, setSubmittedAns] = useState<TSubmittedAns[]>([]);
+
+    const authHandler = () => {
+        localStorage.setItem('feedbackStatus', 'true');
+    };
+
     useEffect(() => {
         fetch('../../../assets/PWA-questions.xlsx')
             .then((response) => response.blob())
@@ -17,8 +29,9 @@ const Home = () => {
                 if (rows && Array.isArray(rows)) {
                     rows.splice(0, 1);
                     const questions: TQuestion[] = [];
-                    rows.forEach((rowData) => {
+                    rows.forEach((rowData, index: number) => {
                         questions.push({
+                            questionID: index.toString(),
                             question: rowData[0].toString(),
                             answers: rowData.slice(1, 5),
                         });
@@ -29,43 +42,58 @@ const Home = () => {
             });
     }, []);
 
+    const answerClickHandler = useCallback(
+        (ansID: number, questionID: string) => {
+            setSubmittedAns([
+                ...submittedAns,
+                {
+                    questionID: questionID,
+                    userAnswer: ansID,
+                },
+            ]);
+        },
+        []
+    );
+
     return (
-        <div>
-            <Carousel
-                showArrows={true}
-                // autoPlay={true}
-                emulateTouch={true}
-                infiniteLoop={true}
-            >
-                {questions.map(({ answers, question }, index: number) => {
-                    return (
-                        <div
-                            key={index}
-                            className="question-container pro"
-                            // style={{ background: color }}
-                        >
-                            <div className="flex w-full h-full">
-                                <div className="bg-white mx-24 my-24 w-full h-100">
-                                    <h2>{question}</h2>
-                                    <div className="cards">
-                                        {answers.map((answer, index) => {
-                                            return (
-                                                <div
-                                                    key={index}
-                                                    className="custom-card"
-                                                >
-                                                    <p>{answer}</p>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
+        <section className="glass">
+            <Carousel showArrows={true} emulateTouch={true} infiniteLoop={true}>
+                {questions.map(
+                    ({ answers, question, questionID }, index: number) => {
+                        return (
+                            <div className="question-container" key={index}>
+                                <h2 className="question-title">{question}</h2>
+                                {answers.map((answer, index) => {
+                                    return (
+                                        <div
+                                            onClick={() =>
+                                                answerClickHandler(
+                                                    index + 1,
+                                                    questionID
+                                                )
+                                            }
+                                            key={index}
+                                            className="custom-card"
+                                        >
+                                            <p>{answer}</p>
+                                        </div>
+                                    );
+                                })}
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    }
+                )}
             </Carousel>
-        </div>
+            <Button
+                className="pro"
+                type="primary"
+                onClick={authHandler}
+                size="large"
+                style={{ marginBottom: '2rem' }}
+            >
+                Submit
+            </Button>
+        </section>
     );
 };
 

@@ -5,13 +5,11 @@ import AppRouter from './router/AppRouter';
 function App() {
     console.log(import.meta.env.VITE_APP_TITLE);
     return (
-        <div>
-            <AppErrorBoundary>
-                <Layout>
-                    <AppRouter />
-                </Layout>
-            </AppErrorBoundary>
-        </div>
+        <AppErrorBoundary>
+            <Layout>
+                <AppRouter />
+            </Layout>
+        </AppErrorBoundary>
     );
 }
 

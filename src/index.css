@@ -6,21 +6,27 @@
     font-family: 'Poppins', sans-serif;
 }
 
+:root {
+    --dark-blue: #658ec6;
+    --light-blue: #426696;
+    --white: #ffffff;
+}
+
 h1 {
-    color: #426696;
+    color: var(--light-blue);
     font-weight: 600;
     /* font-size: 3rem; */
     opacity: 0.8;
 }
 h2,
 p {
-    color: #658ec6;
+    color: var(--dark-blue);
     font-weight: 500;
     opacity: 0.8;
 }
 
 h3 {
-    color: #426696;
+    color: var(--light-blue);
     font-weight: 600;
     opacity: 0.8;
 }
@@ -32,6 +38,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .glass {
@@ -46,6 +53,8 @@ main {
     z-index: 2;
     backdrop-filter: blur(2rem);
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media screen and (min-width: 480px) {
@@ -54,7 +63,7 @@ main {
     }
 }
 
-/* .circle1,
+.circle1,
 .circle2 {
     background: white;
     background: linear-gradient(
@@ -68,7 +77,24 @@ main {
     border-radius: 50%;
 }
 
-.circle1 {
+/* @media screen and (max-width: 480px) {
+    .circle1,
+    .circle2 {
+        height: 5rem;
+        width: 5rem;
+    }
+    .circle1 {
+        top: 14%;
+        right: 8%;
+    }
+
+    .circle2 {
+        bottom: 15%;
+        left: 5%;
+    }
+} */
+
+/* .circle1 {
     top: 5%;
     right: 15%;
 }
@@ -89,11 +115,11 @@ main {
     background: linear-gradient(to right top, #65dfc9, #6cdbeb);
     border-radius: 30px;
     color: white;
-    padding: 10px 15px;
     position: relative;
     box-shadow: 6px 6px 20px rgba(75, 75, 75, 0.212);
     cursor: pointer;
     margin-top: 2rem;
+    width: fit-content;
 }
 
 .pro h2 {
@@ -148,6 +174,17 @@ main {
     width: 90%;
 }
 
+.notification {
+    background: linear-gradient(
+        to left top,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.5)
+    );
+    border-radius: 1rem;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+    color: #426696;
+}
+
 @media screen and (min-width: 480px) {
     .card {
         width: 80%;
@@ -161,18 +198,39 @@ main {
 }
 
 .custom-card {
-    display: flex;
+    width: 80%;
     background: linear-gradient(
         to left top,
         rgba(255, 255, 255, 0.8),
         rgba(255, 255, 255, 0.5)
     );
     border-radius: 1rem;
-    margin: 2rem 0rem;
+    margin: 0.5rem 0rem;
     padding: 2rem;
     box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
-    justify-content: space-between;
 }
+
+.custom-card:hover {
+    cursor: pointer;
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    color: var(--white);
+}
+
+.custom-card:hover p {
+    cursor: pointer;
+    color: var(--white);
+}
+
+.question-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-title {
+    padding: 2em 0;
+}
+
 .card-info {
     display: flex;
     flex-direction: column;
@@ -191,9 +249,6 @@ main {
     font-size: 1.7vw;
 }
 
-.question-container {
-    height: 800px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.carousel-root {
+    width: 100%;
 }
